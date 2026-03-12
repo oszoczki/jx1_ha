@@ -114,9 +114,9 @@ CREATE TABLE IF NOT EXISTS transaction_payment_methods (
     amount DECIMAL(10,2) NOT NULL,
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
-    KEY idx_transaction_id (transaction_id),
-    KEY idx_payment_type (payment_type),
-    CONSTRAINT fk_payment_transaction FOREIGN KEY (transaction_id) REFERENCES transactions (id) ON DELETE CASCADE
+    INDEX idx_transaction_id (transaction_id),
+    INDEX idx_payment_type (payment_type),
+    FOREIGN KEY (transaction_id) REFERENCES transactions (id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 SET FOREIGN_KEY_CHECKS = 1;
